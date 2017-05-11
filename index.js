@@ -9,19 +9,17 @@ function transform(src, dest, config) {
         default:
             break;
     }
-
     dest = dest || {};
     config = config || {};
-
     if (typeof src === 'string') {
         try {
             src = JSON.parse(src);
-        } catch (ex) {
+        }
+        catch (ex) {
             return null;
         }
     }
-
-    Object.keys(config).forEach(function(key) {
+    Object.keys(config).forEach(function (key) {
         switch (typeof config[key]) {
             case 'function':
                 dest[key] = config[key](src, dest, key);
@@ -31,33 +29,28 @@ function transform(src, dest, config) {
                 break;
         }
     });
-
     return dest;
 }
-
 //============================ Transforms
-
 transform.transforms = {
-    Namespace: function(src, dest, srcKey, destKey) {
+    Namespace: function (src, dest, srcKey, destKey) {
         dest[destKey] = transform.getNamespacedProperty(src, srcKey);
     }
 };
 transform.transforms.default = transform.transforms.Namespace;
-
 //============================ Utilities
-
 transform.getNamespacedProperty = function getNamespacedProperty(obj, path) {
     var retVal = obj;
     var paths = path.split('.');
     for (var i = 0; i < paths.length; ++i) {
         if (retVal && paths[i] in retVal) {
             retVal = retVal[paths[i]];
-        } else {
+        }
+        else {
             retVal = null;
             break;
         }
     }
     return retVal;
 };
-
 module.exports = transform;
