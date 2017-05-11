@@ -8,10 +8,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/nodeunit": "0.0.30",
     "nodeunit": "^0.9.1"
   },
   "scripts": {
-    "test": "./node_modules/nodeunit/bin/nodeunit tests/index.js --reporter nested --config tests/conf.json",
+    "test": "nodeunit dist/tests/index.js --reporter nested --config tests/conf.json",
     "testDebug": "DEBUG=true npm test"
   },
   "repository": {

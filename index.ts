@@ -24,7 +24,7 @@ function transform(src, dest, config) {
     Object.keys(config).forEach(function(key) {
         switch (typeof config[key]) {
             case 'function':
-                let v = config[key](src, dest, key);
+                var v = config[key](src, dest, key);
                 if( v === undefined ) break; // ignore attribute
                 dest[key] = v
                 break;
@@ -41,7 +41,9 @@ function transform(src, dest, config) {
 
 transform.transforms = {
     Namespace: function(src, dest, srcKey, destKey) {
-        dest[destKey] = transform.getNamespacedProperty(src, srcKey);
+        var v = transform.getNamespacedProperty(src, srcKey);
+        if( v !== undefined )
+            dest[destKey] = v;
     }
 };
 transform.transforms.default = transform.transforms.Namespace;
@@ -55,7 +57,7 @@ transform.getNamespacedProperty = function getNamespacedProperty(obj, path) {
         if (retVal && paths[i] in retVal) {
             retVal = retVal[paths[i]];
         } else {
-            retVal = null;
+            retVal = undefined;
             break;
         }
     }

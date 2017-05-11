@@ -70,3 +70,6 @@ console.log(viewData);
 */
 ```
 
+## undefined
+
+If the source field ( or function ) is `undefined` such field will be not included into destination object

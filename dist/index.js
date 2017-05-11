@@ -28,7 +28,7 @@ function transform(src, dest, config) {
                 dest[key] = v;
                 break;
             case 'string':
-                transform.transforms["default"](src, dest, config[key], key);
+                transform.transforms.default(src, dest, config[key], key);
                 break;
         }
     });
@@ -42,7 +42,7 @@ transform.transforms = {
             dest[destKey] = v;
     }
 };
-transform.transforms["default"] = transform.transforms.Namespace;
+transform.transforms.default = transform.transforms.Namespace;
 //============================ Utilities
 transform.getNamespacedProperty = function getNamespacedProperty(obj, path) {
     var retVal = obj;
