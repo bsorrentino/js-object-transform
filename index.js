@@ -22,7 +22,10 @@ function transform(src, dest, config) {
     Object.keys(config).forEach(function (key) {
         switch (typeof config[key]) {
             case 'function':
-                dest[key] = config[key](src, dest, key);
+                var v = config[key](src, dest, key);
+                if (v === undefined)
+                    break; // ignore attribute
+                dest[key] = v;
                 break;
             case 'string':
                 transform.transforms.default(src, dest, config[key], key);
