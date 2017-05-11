@@ -1,6 +1,5 @@
 /// <reference path="../index.d.ts" />
 
-
 import {ITestGroup, Test} from  "nodeunit";
 import {toString} from "./helpers";
 

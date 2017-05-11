@@ -1,4 +1,3 @@
-/// <reference path="../index.d.ts" />
 "use strict";
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
