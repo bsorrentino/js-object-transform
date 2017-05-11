@@ -12,7 +12,7 @@
     "nodeunit": "^0.9.1"
   },
   "scripts": {
-    "test": "nodeunit dist/tests/index.js --reporter nested --config tests/conf.json",
+    "test": "nodeunit dist/tests/index.js --reporter nested --config src/tests/conf.json",
     "testDebug": "DEBUG=true npm test"
   },
   "repository": {

@@ -1,4 +1,4 @@
-/// <reference path="../index.d.ts" />
+/// <reference path="../../index.d.ts" />
 
 import {ITestGroup, Test} from  "nodeunit";
 import {toString} from "./helpers";
@@ -8,11 +8,11 @@ const DEBUG = !!process.env.DEBUG;
 type Source = { email:string, mobile?:string };
 type Dest = { attribute:[any], mobile?:string };
 
+let  transform:transform<Source,Dest> = require("../index");
+
 export var testGroup:ITestGroup = { 
 
     setUp: (callback) => {
-        var transform:transform<Source,Dest> = this.transform = require('../index');
-
         this.configuration = [ {
             "attribute":( src, dest ) => {
                 if( src.email === undefined ) return;

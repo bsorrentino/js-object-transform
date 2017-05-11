@@ -1,3 +1,4 @@
+"use strict";
 var transform;
 (function (transform) {
     function getNamespacedProperty(obj, path) {

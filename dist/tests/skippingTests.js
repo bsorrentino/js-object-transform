@@ -3,9 +3,9 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var helpers_1 = require("./helpers");
 var DEBUG = !!process.env.DEBUG;
+var transform = require("../index");
 exports.testGroup = {
     setUp: function (callback) {
-        var transform = _this.transform = require('../index');
         _this.configuration = [{
                 "attribute": function (src, dest) {
                     if (src.email === undefined)

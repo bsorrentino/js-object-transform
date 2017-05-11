@@ -58,4 +58,4 @@ namespace transform {
 
 }
 
-module.exports = transform.apply;
+export = transform.apply;
