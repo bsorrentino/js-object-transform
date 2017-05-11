@@ -1,3 +1,4 @@
+/// <reference path="../index.d.ts" />
 "use strict";
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -18,18 +19,8 @@ exports.testGroup = {
                 "mobile": "mobile"
             }
         ];
-        _this.source = [
-            { email: "test@mail.com", mobile: "5555555555" },
-            { email: "test@mail.com", mobile: undefined },
-            { email: "test@mail.com" },
-            { email: "test@mail.com", mobile: null }
-        ];
-        _this.destination = [
-            transform(_this.source[0], _this.configuration[0]),
-            transform(_this.source[1], _this.configuration[0]),
-            transform(_this.source[2], _this.configuration[0]),
-            transform(_this.source[3], _this.configuration[0]),
-        ];
+        _this.source = new Array({ email: "test@mail.com", mobile: "5555555555" }, { email: "test@mail.com", mobile: undefined }, { email: "test@mail.com" }, { email: "test@mail.com", mobile: null });
+        _this.destination = new Array(transform(_this.source[0], _this.configuration[0]), transform(_this.source[1], _this.configuration[0]), transform(_this.source[2], _this.configuration[0]), transform(_this.source[3], _this.configuration[0]));
         callback();
     },
     tearDown: function (callback) {
@@ -43,9 +34,10 @@ exports.testGroup = {
     },
     'verify destination[0] data': function (test) {
         test.expect(2);
+        var source = _this.source[0];
         var dest = _this.destination[0];
         test.ok(Array.isArray(dest.attribute));
-        test.strictEqual(dest.mobile, _this.source[0].mobile);
+        test.strictEqual(dest.mobile, source.mobile);
         test.done();
     },
     'verify destination[1] skipping undefined from dest': function (test) {
