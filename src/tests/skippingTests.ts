@@ -8,7 +8,7 @@ const DEBUG = !!process.env.DEBUG;
 type Source = { email:string, mobile?:string };
 type Dest = { attribute:[any], mobile?:string };
 
-let  transform:transform<Source,Dest> = require("../index");
+let  transform:Transform = require("../index");
 
 export var testGroup:ITestGroup = { 
 

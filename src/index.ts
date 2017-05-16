@@ -59,3 +59,4 @@ namespace transform {
 }
 
 export = transform.apply;
+//export default transform.apply;
